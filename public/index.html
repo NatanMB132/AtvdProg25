@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversor de Datas</title>
+</head>
+<body>
+  <h1>Conversor de Datas</h1>
+  <input id="date" placeholder="Digite uma data ou timestamp" />
+  <input id="timezone" placeholder="Fuso horário (opcional)" />
+  <button onclick="fetchDate()">Converter</button>
+  <pre id="result"></pre>
+
+  <h2>Diferença entre datas</h2>
+  <input id="date1" placeholder="Data 1" />
+  <input id="date2" placeholder="Data 2" />
+  <button onclick="fetchDiff()">Calcular Diferença</button>
+  <pre id="diffResult"></pre>
+
+  <script>
+    async function fetchDate() {
+      const date = document.getElementById("date").value;
+      const timezone = document.getElementById("timezone").value;
+      let url = `/api/${date}`;
+      if (timezone) url += `?timezone=${timezone}`;
+      const res = await fetch(url);
+      const data = await res.json();
+      document.getElementById("result").textContent = JSON.stringify(data, null, 2);
+    }
+
+    async function fetchDiff() {
+      const date1 = document.getElementById("date1").value;
+      const date2 = document.getElementById("date2").value;
+      const res = await fetch(`/api/diff/${date1}/${date2}`);
+      const data = await res.json();
+      document.getElementById("diffResult").textContent = JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>
