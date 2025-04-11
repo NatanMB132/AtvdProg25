@@ -22,5 +22,5 @@ Express
 
 Cors
 
-Tive auxílio do ChatGPT para a documentação (colocar comentários) e para a criação desse README.md
+Tive auxílio do ChatGPT para a documentação (colocar comentários) e para a criação desse README.md/n
 Espero que gostem!❤️
